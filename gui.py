@@ -6,14 +6,12 @@ from PIL import Image, ImageTk
 import numpy as np
 from keras.models import load_model
 
-# ================================
 # Load trained model
-# ================================
+
 model = load_model('traffic_classifier.h5')
 
-# ================================
 # Dictionary of classes
-# ================================
+
 classes = {
     1: 'Speed limit (20km/h)',
     2: 'Speed limit (30km/h)',
@@ -60,9 +58,8 @@ classes = {
     43: 'End no passing veh > 3.5 tons'
 }
 
-# ================================
 # GUI Setup
-# ================================
+
 top = tk.Tk()
 top.geometry('800x600')
 top.title('Traffic Sign Classification')
@@ -71,9 +68,8 @@ top.configure(background='#CDCDCD')
 label = Label(top, background='#CDCDCD', font=('Arial', 15, 'bold'))
 sign_image = Label(top)
 
-# ================================
 # Functions
-# ================================
+
 def classify(file_path):
     try:
         img = Image.open(file_path).resize((30, 30))
@@ -103,9 +99,8 @@ def upload_image():
         label.configure(text='')
         show_classify_button(file_path)
 
-# ================================
 # GUI Layout
-# ================================
+
 upload_btn = Button(top, text="Upload an image", command=upload_image,
                     background='#364156', foreground='white',
                     font=('Arial', 10, 'bold'))
@@ -120,3 +115,4 @@ heading = Label(top, text="Know Your Traffic Sign", pady=20,
 heading.pack()
 
 top.mainloop()
+
